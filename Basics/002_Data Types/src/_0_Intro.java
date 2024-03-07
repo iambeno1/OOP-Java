@@ -46,12 +46,14 @@ public class _0_Intro {
         double myDouble = 2.5;
         char myChar = 'B';
         String myText = "Hello";
+        boolean myBool = true;
 
         System.out.println(myNum);
         System.out.println(myFloat);
         System.out.println(myDouble);
         System.out.println(myChar);
         System.out.println(myText);
+        System.out.println(myBool);
 
     }
 }
