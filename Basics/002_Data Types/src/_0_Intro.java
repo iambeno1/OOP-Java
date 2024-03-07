@@ -39,6 +39,19 @@ public class _0_Intro {
         System.out.println("Tahun lahir : "+tahun);
         System.out.println("Harga batagor : "+harga);
 
-        
+
+        // Java Data types
+        int myNum = 5;
+        float myFloat = 5.99f;
+        double myDouble = 2.5;
+        char myChar = 'B';
+        String myText = "Hello";
+
+        System.out.println(myNum);
+        System.out.println(myFloat);
+        System.out.println(myDouble);
+        System.out.println(myChar);
+        System.out.println(myText);
+
     }
 }
