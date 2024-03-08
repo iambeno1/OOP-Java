@@ -49,5 +49,7 @@ public class Solutions {
         }
         // ----------End nomor 5----------
 
+        input.close();
+
     }
 }
