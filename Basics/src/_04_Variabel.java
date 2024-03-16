@@ -1,4 +1,4 @@
-public class _4_Variabel {
+public class _04_Variabel {
     public static void main(String[] args) {
         // Tipe var: bisa digunakan untuk deklaarasi variabel. (dgn aturan deklarasi + inisialisasi), tipe ini auto deteksi tipe dari value nya
 
