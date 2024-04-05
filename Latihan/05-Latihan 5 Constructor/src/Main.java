@@ -22,5 +22,20 @@ public class Main {
         System.out.println("Umur : " + orang2.umur);
         System.out.println("NIM : " + orang2.NIM);
         System.out.println("Prodi: " + orang2.prodi);
+
+        Person orang3 = new Person("Rian Lot", "105222005", "Komunikasi", 21);
+
+        System.out.println("\n\nNama : " + orang3.nama);
+        System.out.println("Umur : " + orang3.umur);
+        System.out.println("NIM : " + orang3.NIM);
+        System.out.println("Prodi: " + orang3.prodi);
+        
+        // Memanggil constructor lain
+        Person orang4 = new Person("Jake Paul");
+        System.out.println("\n\nNama : " + orang4.nama);
+        System.out.println("Umur : " + orang4.umur);
+        System.out.println("NIM : " + orang4.NIM);
+        System.out.println("Prodi: " + orang4.prodi);
+
     }
 }
