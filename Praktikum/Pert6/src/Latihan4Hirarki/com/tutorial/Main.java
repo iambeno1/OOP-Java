@@ -1,11 +1,11 @@
 package Latihan4Hirarki.com.tutorial;
 
 // ini akan mengimport class Console 
-import com.terminal.Console;
+import Latihan4Hirarki.com.terminal.Console;
 // ini akan mengimport class Coba 
-import com.terminal.Coba;
+import Latihan4Hirarki.com.terminal.Coba;
 // mengimport static method dari console; 
-import static com.terminal.Console.log;
+import static Latihan4Hirarki.com.terminal.Console.log;
 
 
 class Main{

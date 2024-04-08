@@ -1,6 +1,6 @@
 package Latihan4Hirarki.com.tutorial;
 
-import com.terminal.Console;
+import Latihan4Hirarki.com.terminal.Console;
 
 public class Player {
     
