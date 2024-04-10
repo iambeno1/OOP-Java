@@ -1,35 +1,25 @@
 package Menu;
 
 public class MenuItem {
-    private String ID;
-    private String namaMakanan;
-    private double harga;
+    private String id;
+    private String name;
+    private double price;
 
-    // ======== Setter dan Getter untuk atribut ID ======== 
-    public void setID(String ID){
-        this.ID = ID;
-    }
-    
-    public String getID(){
-        return this.ID;
-    }
-    
-    // ======== Setter dan Getter untuk atribut namaMakanan ======== 
-    public void setNamaMakanan(String namaMakanan){
-        this.namaMakanan = namaMakanan;
-    }
-    
-    public String getNamaMakanan(){
-        return this.namaMakanan;
-    }
-    
-    // ======== Setter dan Getter untuk atribut namaMakanan ======== 
-    public void setHarga(double harga){
-        this.harga = harga;
-    }
-    
-    public double getHarga(){
-        return this.harga;
+    public MenuItem(String id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }
