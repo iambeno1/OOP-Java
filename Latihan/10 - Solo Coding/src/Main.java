@@ -2,6 +2,8 @@ import Mahasiswa.Mahasiswa;
 
 import java.util.ArrayList;
 
+import Dosen.Dosen;
+
 public class Main {
     public static void main(String[] args) {
         Mahasiswa mhs1 = new Mahasiswa();
@@ -97,6 +99,17 @@ public class Main {
         System.out.println(mhs1.getListNilai());
         
         mhs1.displayMhs();
+
+        System.out.println();
+
+        // Buat Dosen dan anak walinya
+        Dosen dosen = new Dosen();
+        dosen.setNama("Dr. Ariana");
+
+        dosen.anakWali(mhs1);
+        dosen.anakWali(mhs2);
+
+        dosen.displayAnkWali();
     }
 }
 
