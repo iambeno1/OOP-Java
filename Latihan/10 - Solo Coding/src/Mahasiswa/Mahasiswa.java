@@ -6,11 +6,11 @@ public class Mahasiswa {
     private String nama;
     private String NIM;
     private int tahunMasuk;
-    private ArrayList<Integer> listNilai;
+    private ArrayList<Double> listNilai;
 
     public Mahasiswa(){}
 
-    public Mahasiswa(String nama, String NIM, int tahunMasuk, ArrayList<Integer> listNilai){
+    public Mahasiswa(String nama, String NIM, int tahunMasuk, ArrayList<Double> listNilai){
         this.nama = nama;
         this.NIM = NIM;
         this.tahunMasuk = tahunMasuk;
@@ -25,6 +25,14 @@ public class Mahasiswa {
 
         double rataRata = total / listNilai.size();
         return rataRata;
+    }
+
+    public void displayMhs(){
+        System.out.println("Nama \t\t: " + nama);
+        System.out.println("NIM \t\t: " + NIM);
+        System.out.println("Tahun Masuk \t: " + tahunMasuk);
+        System.out.println("Nilai \t\t: " + listNilai);
+        System.out.println("Nilai rata-rata : " + nilaiRataRata(listNilai));
     }
 
     public void setNama(String nama){
@@ -51,11 +59,11 @@ public class Mahasiswa {
         return tahunMasuk;
     }
 
-    public void setListNilai(ArrayList<Integer> listNilai){
+    public void setListNilai(ArrayList<Double> listNilai){
         this.listNilai = listNilai;
     }
 
-    public ArrayList<Integer> getListNilai(){
+    public ArrayList<Double> getListNilai(){
         return listNilai;
     }
 }
