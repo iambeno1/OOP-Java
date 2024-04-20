@@ -11,7 +11,7 @@ public class ManajemenPenerbangan {
     }
 
     public void tambahPenerbangan(Penerbangan baru){
-        penerbangans.add(baru)
+        penerbangans.add(baru);
         totalPenerbangan++;
     }
 
@@ -32,6 +32,14 @@ public class ManajemenPenerbangan {
             }
         }
         return hasil;
+    }
+
+    public static void setTotalPenerbangan(int totalPenerbangan) {
+        ManajemenPenerbangan.totalPenerbangan = totalPenerbangan;
+    }
+
+    public static int getTotalPenerbangan() {
+        return totalPenerbangan;
     }
 
 }
