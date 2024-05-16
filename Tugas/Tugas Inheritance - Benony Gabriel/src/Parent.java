@@ -8,6 +8,6 @@ public class Parent {
 
     // Method untuk menampilkan informasi
     public void displayInfo() {
-        System.out.println("Parent Name: " + name);
+        System.out.println("Parent - Nama : " + name);
     }
 }

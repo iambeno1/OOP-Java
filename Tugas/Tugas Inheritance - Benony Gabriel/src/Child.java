@@ -1,11 +1,11 @@
 public class Child extends Parent {
-    private int age;
+    private String nim;
 
     // Konstruktor Child
-    public Child(String name, int age) {
+    public Child(String name, String nim) {
         // Menggunakan keyword 'super' untuk memanggil konstruktor parent class
         super(name);
-        this.age = age;
+        this.nim = nim;
     }
 
     // Overriding method displayInfo dari Parent class
@@ -13,6 +13,6 @@ public class Child extends Parent {
     public void displayInfo() {
         // Menggunakan keyword 'super' untuk memanggil method displayInfo dari Parent class
         super.displayInfo();
-        System.out.println("Child Age: " + age);
+        System.out.println("Child - nim : " + nim);
     }
 }
