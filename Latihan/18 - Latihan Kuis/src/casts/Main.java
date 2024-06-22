@@ -16,12 +16,21 @@ public class Main {
 
         System.out.println(employee instanceof VicePrecident);
 
+        sayHello(new Employee("Joko"));
+        sayHello(new Manager("Budi"));
+        sayHello(new VicePrecident("Otong"));
+
     }
 
-    // static void sayHello(Employee employee){
-    //     if(employee instanceof VicePrecident){
-    //         VicePrecident vp = (VicePrecident) employee;
-    //         System.out.println("vp : " + VicePrecident.);
-    //     }
-    // }
+    static void sayHello(Employee employee){
+        if(employee instanceof VicePrecident){
+            VicePrecident vp = (VicePrecident) employee;
+            System.out.println("Hello vp : " + vp.name);
+        }else if(employee instanceof Manager){
+            Manager mgr = (Manager) employee;
+            System.out.println("Hello manager : " + mgr.name);
+        }else{
+            System.out.println("Hello " + employee.name);
+        }
+    }
 }
