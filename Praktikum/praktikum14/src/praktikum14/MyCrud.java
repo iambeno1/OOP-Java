@@ -6,10 +6,14 @@ package praktikum14;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -17,11 +21,29 @@ import javax.swing.JOptionPane;
  */
 public class MyCrud extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MyCrud
-     */
+    private static void setModel(TableModel resultSetToTableModel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+
+    public void selectProduct() {
+        try {
+            con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/javacrud", "root", "");
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM mahasiswa");
+            mhsTbl.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public MyCrud() {
         initComponents();
+        selectProduct();
     }
 
     /**
@@ -34,162 +56,297 @@ public class MyCrud extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        LoginBtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        daftarBtn = new javax.swing.JButton();
-        password = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        nama = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        nim = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        prodi = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        createBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        delBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mhsTbl = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        prodPrice1 = new javax.swing.JTextField();
+        close = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("LOGIN");
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        email.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel2.setText("Java CRUD Mahasiswa");
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Email");
+        id.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        id.setForeground(new java.awt.Color(51, 51, 51));
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Password");
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("ID");
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        nama.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        nama.setForeground(new java.awt.Color(51, 51, 51));
+        nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\benon\\Downloads\\LOGO 2.png")); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Nama");
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("SELAMAT DATANG KEMBALI");
+        nim.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        nim.setForeground(new java.awt.Color(51, 51, 51));
+        nim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nimActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("NIM");
+
+        prodi.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        prodi.setForeground(new java.awt.Color(51, 51, 51));
+        prodi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodiActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Prodi");
+
+        createBtn.setBackground(new java.awt.Color(0, 153, 153));
+        createBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        createBtn.setForeground(new java.awt.Color(255, 255, 255));
+        createBtn.setText("Create");
+        createBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createBtnMouseClicked(evt);
+            }
+        });
+        createBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createBtnActionPerformed(evt);
+            }
+        });
+
+        updateBtn.setBackground(new java.awt.Color(0, 153, 153));
+        updateBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateBtnMouseClicked(evt);
+            }
+        });
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        delBtn.setBackground(new java.awt.Color(0, 153, 153));
+        delBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        delBtn.setForeground(new java.awt.Color(255, 255, 255));
+        delBtn.setText("Delete");
+        delBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delBtnMouseClicked(evt);
+            }
+        });
+        delBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtnActionPerformed(evt);
+            }
+        });
+
+        clearBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        clearBtn.setForeground(new java.awt.Color(0, 153, 153));
+        clearBtn.setText("Clear");
+        clearBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearBtnMouseClicked(evt);
+            }
+        });
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
+        mhsTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama", "NIM", "Prodi"
+            }
+        ));
+        mhsTbl.setShowGrid(true);
+        mhsTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mhsTblMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(mhsTbl);
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("Angkatan");
+
+        prodPrice1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        prodPrice1.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(clearBtn)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nama, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                                .addComponent(id)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
+                            .addGap(6, 6, 6)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nim)
+                                .addComponent(prodi))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(createBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(delBtn)))
+                .addGap(72, 72, 72)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel5)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(prodPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel4)
-                .addGap(62, 62, 62)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(prodi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(clearBtn)
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(createBtn)
+                            .addComponent(updateBtn)
+                            .addComponent(delBtn)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(prodPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        LoginBtn.setBackground(new java.awt.Color(0, 153, 153));
-        LoginBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        LoginBtn.setForeground(new java.awt.Color(255, 255, 255));
-        LoginBtn.setText("Masuk");
-        LoginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        close.setForeground(new java.awt.Color(255, 255, 255));
+        close.setText("×");
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LoginBtnMouseClicked(evt);
+                closeMouseClicked(evt);
             }
         });
-
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Belum punya akun? ");
-
-        daftarBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        daftarBtn.setForeground(new java.awt.Color(0, 153, 153));
-        daftarBtn.setLabel("Daftar");
-        daftarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                daftarBtnMouseClicked(evt);
-            }
-        });
-        daftarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                daftarBtnActionPerformed(evt);
-            }
-        });
-
-        password.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(256, 256, 256))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(LoginBtn)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(password))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(63, 63, 63))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(daftarBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(close)
+                .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addGap(87, 87, 87)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(LoginBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(daftarBtn))
-                .addGap(56, 56, 56))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,67 +359,125 @@ public class MyCrud extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void daftarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarBtnActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_daftarBtnActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
-    private void LoginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginBtnMouseClicked
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
         // TODO add your handling code here:
-        String email, kataSandi, query, passDB = null;
+    }//GEN-LAST:event_namaActionPerformed
+
+    private void nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nimActionPerformed
+
+    private void prodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prodiActionPerformed
+
+    private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void createBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createBtnMouseClicked
         String SUrl, SUser, SPass;
-        SUrl = "jdbc:MySQL://localhost:3306/tubespbodb";
+        SUrl = "jdbc:MySQL://localhost:3306/javacrud";
         SUser = "root";
         SPass = "";
-        
-        int notFound = 0;
 
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con  = DriverManager.getConnection(SUrl, SUser, SPass);
-            Statement st = con.createStatement();
-            if("".equals(this.email.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Email wajib diisi", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(this.password.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Kata Sandi wajib diisi", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                email = this.email.getText();
-                kataSandi = this.password.getText();
-//                System.out.println("Kata Sandi: " + kataSandi);
-                
-                query = "SELECT * FROM user WHERE email= '"+email+"'";
-                ResultSet rs = st.executeQuery(query);
-                while (rs.next()) {
-                    passDB = rs.getString("password");
-                    notFound = 1;
-                }
-                if(notFound == 1 && kataSandi.equals(passDB)){
-                    System.out.println("Okeey");
-                    Beranda berandaFrame = new Beranda();
-                    berandaFrame.setVisible(true);
-                    berandaFrame.pack();
-                    berandaFrame.setLocationRelativeTo(null);
-                    this.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(new JFrame(), "Kata Sandi atau Email Salah", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-//                st.execute(query);
-                this.password.setText("");
-                
-//                JOptionPane.showMessageDialog(null, "Berhasil Mendaftar, Silahkan Login dengan Akun anda!");
+        if (nama.getText().isEmpty() || nim.getText().isEmpty() || prodi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informasi harus lengkap");
+        } else {
+            try {
+                con = DriverManager.getConnection(SUrl, SUser, SPass);
+//                PreparedStatement add = con.prepareStatement("INSERT INTO mahasiswa VALUES(?, ?, ?, ?)");
+                String query = "INSERT INTO mahasiswa (Nama, Nim, Prodi) VALUES (?, ?, ?)";
+                PreparedStatement add = con.prepareStatement(query);
+                add.setString(1, nama.getText());
+                add.setString(2, nim.getText());
+                add.setString(3, prodi.getText());
+
+                int row = add.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Mahasiswa berhasil ditambahkan");
+                con.close();
+                selectProduct();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }catch(Exception e){
-            System.out.println("Error " + e.getMessage());
         }
-        
-    }//GEN-LAST:event_LoginBtnMouseClicked
+    }//GEN-LAST:event_createBtnMouseClicked
 
-    private void daftarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarBtnMouseClicked
-        Daftar daftarFrame = new Daftar();
-        daftarFrame.setVisible(true);
-        daftarFrame.pack();
-        daftarFrame.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_daftarBtnMouseClicked
+    private void clearBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBtnMouseClicked
+        id.setText("");
+        nama.setText("");
+        nim.setText("");
+        prodi.setText("");
+    }//GEN-LAST:event_clearBtnMouseClicked
+
+    private void delBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtnMouseClicked
+        if (id.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Masukkan ID Mahasiswa yang ingin dihapus!");
+        } else {
+            try {
+                con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/javacrud", "root", "");
+                String mhsId = id.getText();
+                String query = "DELETE FROM mahasiswa  WHERE ID=" + mhsId;
+                Statement add = con.createStatement();
+                add.executeUpdate(query);
+                selectProduct();
+                JOptionPane.showMessageDialog(this, "Berhasil dihapus");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_delBtnMouseClicked
+
+    private void mhsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mhsTblMouseClicked
+        DefaultTableModel model = (DefaultTableModel) mhsTbl.getModel();
+        int myIndex = mhsTbl.getSelectedRow();
+        id.setText(model.getValueAt(myIndex, 0).toString());
+        nama.setText(model.getValueAt(myIndex, 1).toString());
+        nim.setText(model.getValueAt(myIndex, 2).toString());
+        prodi.setText(model.getValueAt(myIndex, 3).toString());
+    }//GEN-LAST:event_mhsTblMouseClicked
+
+    private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
+        if (id.getText().isEmpty() || nama.getText().isEmpty() || nim.getText().isEmpty() || prodi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informasi harus diisi");
+        } else {
+            try {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javacrud", "root", "");
+                String query = "UPDATE mahasiswa SET Nama = ?, Nim = ?, Prodi = ? WHERE ID = ?";
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, nama.getText());
+                pst.setString(2, nim.getText());
+                pst.setString(3, prodi.getText());
+                pst.setInt(4, Integer.parseInt(id.getText()));
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Berhasil diupdate");
+                selectProduct();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_updateBtnMouseClicked
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_closeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,6 +505,9 @@ public class MyCrud extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MyCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -300,17 +518,25 @@ public class MyCrud extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginBtn;
-    private javax.swing.JButton daftarBtn;
-    private javax.swing.JTextField email;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JLabel close;
+    private javax.swing.JButton createBtn;
+    private javax.swing.JButton delBtn;
+    private javax.swing.JTextField id;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable mhsTbl;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField nim;
+    private javax.swing.JTextField prodPrice1;
+    private javax.swing.JTextField prodi;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
