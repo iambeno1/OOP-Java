@@ -1,4 +1,7 @@
+package latihan2;
+
 public class Motorcycle implements Vehicle {
+
     private String brand;
     private boolean hasSideCar;
 
@@ -9,12 +12,12 @@ public class Motorcycle implements Vehicle {
 
     @Override
     public void startEngine(){
-        System.out.println(brand + " Motorcycle engine is started");
+        System.out.println(brand + " Motorcycle engine started");
     }
 
     @Override
     public void stopEngine(){
-        System.out.println(brand + " Motorcycle engine is stopped");
+        System.out.println(brand + " Motorcycle engine stopped");
     }
 
     @Override
@@ -26,7 +29,8 @@ public class Motorcycle implements Vehicle {
         return brand;
     }
 
-    public boolean hasSideCar(){
+    public boolean getHasSideCar(){
         return hasSideCar;
     }
+    
 }

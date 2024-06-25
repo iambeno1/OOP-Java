@@ -1,13 +1,14 @@
-public class Car implements Vehicle {
-    private String brand;
-    private double seatingCapacity;
+package latihan2;
 
-    public Car(String brand, double seatingCapacity){
+public class Car implements Vehicle {
+
+    private String brand;
+    private int seatingCapacity;
+
+    public Car(String brand, int seatingCapacity){
         this.brand = brand;
         this.seatingCapacity = seatingCapacity;
     }
-
-    // public Car(){};
 
     @Override
     public void startEngine(){
@@ -28,7 +29,8 @@ public class Car implements Vehicle {
         return brand;
     }
 
-    public double getSeatingCapacity() {
+    public int getSeatingCapacity() {
         return seatingCapacity;
     }
+
 }

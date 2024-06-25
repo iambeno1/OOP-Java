@@ -1,3 +1,4 @@
+package latihan1;
 public class ElectricCar extends Car {
     private double baterryCapacity;
 

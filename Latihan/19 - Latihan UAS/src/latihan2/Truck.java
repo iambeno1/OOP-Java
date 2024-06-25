@@ -1,4 +1,7 @@
+package latihan2;
+
 public class Truck implements Vehicle {
+    
     private String brand;
     private double loadCapacity;
 
@@ -21,7 +24,7 @@ public class Truck implements Vehicle {
     public double fuelEfficiency(){
         return 10.0;
     }
-    
+
     public String getBrand() {
         return brand;
     }
@@ -29,4 +32,5 @@ public class Truck implements Vehicle {
     public double getLoadCapacity() {
         return loadCapacity;
     }
+
 }
