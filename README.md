@@ -1,6 +1,6 @@
 # OOP Java
 
-OOP (Object-Oriented Programming) adalah sebuah paradigma pemrograman yang menggunakan "objek" dan "kelas" sebagai dasar untuk membuat program. Berikut adalah beberapa konsep dasar dalam OOP:
+OOP (Object-Oriented Programming) adalah sebuah paradigma pemrograman yang menggunakan "objek" dan "kelas" sebagai dasar untuk membuat program. Berikut adalah beberapa konsep dasar dalam OOP :
 
 1. **Objek**: Entitas yang memiliki atribut (data) dan metode (fungsi atau prosedur) yang dapat dilakukan terhadap data tersebut. Misalnya, objek "Mobil" bisa memiliki atribut seperti warna, model, dan metode seperti bergerak atau berhenti.
 
