@@ -12,7 +12,7 @@ OOP (Object-Oriented Programming) adalah sebuah paradigma pemrograman yang mengg
 
 5. **Pewarisan**: Mekanisme yang memungkinkan satu kelas (subkelas atau anak) mewarisi atribut dan metode dari kelas lain (superkelas atau induk). Ini memungkinkan penggunaan kembali kode dan pengorganisasian yang lebih baik.
 
-6. **Polimorfisme**: Konsep yang memungkinkan objek dari kelas yang berbeda untuk diakses melalui antarmuka yang sama. Polimorfisme memungkinkan metode yang sama untuk bekerja dengan cara yang berbeda tergantung pada objek yang dipanggil .
+6. **Polimorfisme**: Konsep yang memungkinkan objek dari kelas yang berbeda untuk diakses melalui antarmuka yang sama. Polimorfisme memungkinkan metode yang sama untuk bekerja dengan cara yang berbeda tergantung pada objek yang dipanggil.
 
 OOP banyak digunakan dalam pengembangan perangkat lunak modern karena memungkinkan kode yang lebih modular, mudah dipelihara, dan dapat digunakan kembali. Beberapa bahasa pemrograman yang mendukung OOP adalah Java, C++, Python, dan banyak lagi. <br><br>
 ![image](https://github.com/iambeno1/oop-java/assets/161951897/07597d06-53ef-4ada-a4fc-d4bb345fbf32)
